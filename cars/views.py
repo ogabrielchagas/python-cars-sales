@@ -4,7 +4,10 @@ from cars.models import Car
 def cars_view(request):
     filter = request.GET.get('search')
 
-    cars = Car.objects.filter(model__icontains=filter)
+    if filter:
+        cars = Car.objects.filter(model__icontains=filter)
+    else:
+        cars = Car.objects.all()
 
     return render(
         request, 
