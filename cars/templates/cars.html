@@ -99,6 +99,7 @@
     </style>
 
     <form method="GET" action="{% url 'cars_list' %}">
+        {% csrf_token %}
         <input type="text" name="search" placeholder="Buscar carro...">
         <button type="submit">Buscar</button>
     </form>
