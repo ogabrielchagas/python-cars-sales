@@ -19,3 +19,9 @@ class CarModelForm(forms.ModelForm):
             self.add_error('factory_year', 'Ano de fabricação mínimo do veículo deve ser 1975')
         return factory_year
     
+    def clean_photo(self):
+        photo = self.cleaned_data.get('photo')
+        if photo is None:
+            self.add_error('photo', 'É necessário anexar uma foto do veículo!')
+        return photo
+    
